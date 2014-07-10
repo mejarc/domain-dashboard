@@ -11,6 +11,7 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'shoulda-matchers', require: false
 end
 
 gem 'sass-rails', '~> 4.0.3'
