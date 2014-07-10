@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710051350) do
+ActiveRecord::Schema.define(version: 20140710215717) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true
 
 end
