@@ -1,4 +1,4 @@
-require 'rspec/rails'
+require 'rails/all'
 require 'shoulda/matchers'
 
 RSpec.configure do |config|
