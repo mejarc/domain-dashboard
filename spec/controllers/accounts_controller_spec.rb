@@ -72,15 +72,13 @@ RSpec.describe AccountsController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { { 'name' => 'My Yet More Excellent Test Account' } }
 
       it "updates the requested account" do
         account = Account.create! valid_attributes
         put :update, {:id => account.to_param, :account => new_attributes}, valid_session
         account.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:account).attributes['name']).to eq new_attributes['name']
       end
 
       it "assigns the requested account as @account" do
