@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AccountsController, :type => :controller do
 
-  let(:valid_attributes) { { 'name' => 'My Test Account' } }
+  let(:valid_attributes) { { 'name' => 'My Second Test Account' } }
   let(:invalid_attributes) { { 'name' => '' } }
   let(:valid_session) { {} }
 
