@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711042112) do
+ActiveRecord::Schema.define(version: 20140713043850) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20140711042112) do
   add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true
 
   create_table "domains", force: true do |t|
-    t.string   "hostname",          null: false
-    t.string   "origin_ip_address", null: false
+    t.string   "hostname"
+    t.string   "origin_ip_address"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
