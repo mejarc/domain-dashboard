@@ -1,0 +1,138 @@
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAccounts (20140710051350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710051350"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140710051350')
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-11 10:45:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered vendor/bundle/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 70ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2014-07-11 10:45:57 -0700
+Processing by AccountsController#index as HTML
+  [1m[35mAccount Load (0.2ms)[0m  SELECT "accounts".* FROM "accounts"
+  Rendered accounts/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 2204ms (Views: 2195.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-11 10:46:00 -0700
+
+
+Started GET "/accounts/new" for 127.0.0.1 at 2014-07-11 10:46:03 -0700
+Processing by AccountsController#new as HTML
+  Rendered accounts/_form.html.erb (37.8ms)
+  Rendered accounts/new.html.erb within layouts/application (80.9ms)
+Completed 200 OK in 98ms (Views: 95.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/accounts" for 127.0.0.1 at 2014-07-11 10:46:07 -0700
+Processing by AccountsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zhA2D99fimVVCzRyqWIcbO7em4YVBcqvkn7QYtlDGtc=", "account"=>{"name"=>"dfsdf"}, "commit"=>"Create Account"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAccount Exists (0.2ms)[0m  SELECT  1 AS one FROM "accounts"  WHERE "accounts"."name" = 'dfsdf' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "accounts" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-07-11 17:46:07.656330"], ["name", "dfsdf"], ["updated_at", "2014-07-11 17:46:07.656330"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/accounts/1
+Completed 302 Found in 19ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/accounts/1" for 127.0.0.1 at 2014-07-11 10:46:07 -0700
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (0.2ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered accounts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 26.0ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAccountIdToDomain (20140712002829)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "domains" ADD "account_id" integer[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140712002829"]]
+  [1m[36m (24.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateDomains (20140713043850)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "hostname" varchar(255), "origin_ip_address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "domains" already exists: CREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "hostname" varchar(255), "origin_ip_address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAccounts (20140710051350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710051350"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddNameIndexToAccount (20140710215717)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_accounts_on_name" ON "accounts" ("name")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710215717"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to AddAccountIdToDomain (20140712002829)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "domains" ADD "account_id" integer
+SQLite3::SQLException: no such table: domains: ALTER TABLE "domains" ADD "account_id" integer
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAccounts (20140710051350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710051350"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to AddNameIndexToAccount (20140710215717)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_accounts_on_name" ON "accounts" ("name")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710215717"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to CreateDomains (20140713043850)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "hostname" varchar(255), "origin_ip_address" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140713043850"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_name' AND type='index'
+
